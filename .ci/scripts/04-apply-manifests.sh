@@ -13,8 +13,6 @@ fi
 
 echo "📦 Aplicando manifestos Kubernetes no namespace '$KUBERNETES_NAMESPACE'..."
 kubectl apply -n "$KUBERNETES_NAMESPACE" -f k8s/db/
-kubectl apply -n "$KUBERNETES_NAMESPACE" -f k8s/zookeeper/
-kubectl apply -n "$KUBERNETES_NAMESPACE" -f k8s/kafka/
 kubectl apply -n "$KUBERNETES_NAMESPACE" -f k8s/app/
 if [ $? -ne 0 ]; then
   echo "❌ Erro ao aplicar manifestos Kubernetes."

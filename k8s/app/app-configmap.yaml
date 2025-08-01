@@ -9,5 +9,4 @@ data:
   LOG_LEVEL: "info"
   SERVER_ADDRESS: "0.0.0.0"
   SPRING_DATASOURCE_URL: "jdbc:postgresql://db:5432/techchallenge"
-  SPRING_KAFKA_BOOTSTRAP_SERVERS: "kafka:9092"
   SPRING_PROFILES_ACTIVE: "default"

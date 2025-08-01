@@ -22,21 +22,6 @@ spring:
     generate-ddl: true
   messages:
     basename: messages
-  kafka:
-    bootstrap-servers: ${SPRING_KAFKA_BOOTSTRAP_SERVERS:localhost:9092}
-    consumer:
-      group-id: ${SPRING_KAFKA_GROUP_ID:techchallenge-group}
-      auto-offset-reset: ${SPRING_KAFKA_AUTO_OFFSET_RESET:earliest}
-      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
-      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
-    producer:
-      retries: ${SPRING_KAFKA_PRODUCER_RETRIES:3}
-      properties:
-        request.timeout.ms: ${SPRING_KAFKA_REQUEST_TIMEOUT_MS:1000}
-        delivery.timeout.ms: ${SPRING_KAFKA_DELIVERY_TIMEOUT_MS:1000}
-        max.block.ms: ${SPRING_KAFKA_MAX_BLOCK_MS:1000}
-      key-serializer: org.apache.kafka.common.serialization.StringSerializer
-      value-serializer: org.apache.kafka.common.serialization.StringSerializer
   management:
     endpoints:
       web:
@@ -80,5 +65,3 @@ logging:
     br.com.fiap.postech: INFO
     org.hibernate.SQL: OFF
     org.hibernate.type.descriptor.sql.BasicBinder: OFF
-    org.apache.kafka.clients: OFF
-    org.apache.kafka.common: OFF

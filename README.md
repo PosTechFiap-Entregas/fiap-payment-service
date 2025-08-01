@@ -1,6 +1,6 @@
 # 🧪 Tech Challenge - FastFood API
 
-Este projeto é uma API REST construída com **Spring Boot**, utilizando **PostgreSQL**, **Kafka**, **Docker** e **Flyway**.
+Este projeto é uma API REST construída com **Spring Boot**, utilizando **PostgreSQL**, **Docker** e **Flyway**.
 
 ---
 
@@ -29,7 +29,7 @@ Baixe os arquivos da pasta ```src/main/resources/static/collections``` e importe
 
 ## 🐳 Subindo todos os serviços com Docker Compose
 
-Para iniciar **todos os serviços** (PostgreSQL, Kafka/Zookeeper e a API Spring Boot) via Docker Compose:
+Para iniciar **todos os serviços** (PostgreSQL e a API Spring Boot) via Docker Compose:
 
 ```bash
 ./scripts/start.sh
@@ -37,7 +37,6 @@ Para iniciar **todos os serviços** (PostgreSQL, Kafka/Zookeeper e a API Spring 
 
 Isso irá subir os seguintes serviços:
 - **PostgreSQL** na porta `5432`
-- **Kafka/Zookeeper** nas portas `9092` e `2181`
 - **API Spring Boot** na porta `8080`
 - **Flyway** para migrações de banco de dados
 
@@ -111,7 +110,6 @@ docker compose up --build
 Isso irá subir:
 
 - **PostgreSQL** (porta `5432`)
-- **Kafka/Zookeeper** (portas `9092`, `2181`)
 - **API Spring Boot** (porta `8080`)
 
 ---
@@ -160,7 +158,6 @@ mvn test
 - Java 17
 - Spring Boot
 - PostgreSQL
-- Kafka
 - Flyway
 - Docker & Docker Compose
 
