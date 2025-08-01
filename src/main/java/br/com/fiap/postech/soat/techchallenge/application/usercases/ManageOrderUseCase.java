@@ -13,4 +13,5 @@ public interface ManageOrderUseCase {
     Order createOrder(CreateOrderCommand createOrderCommand);
     void updateOrderStatus(UUID orderId, OrderStatus orderStatus);
     void deleteOrder(UUID orderID);
+    Order checkoutOrder(UUID orderID);
 }

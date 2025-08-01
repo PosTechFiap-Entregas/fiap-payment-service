@@ -1,6 +1,7 @@
 package br.com.fiap.postech.soat.techchallenge.infrastructure.web;
 
 import br.com.fiap.postech.soat.techchallenge.application.dto.request.*;
+import br.com.fiap.postech.soat.techchallenge.application.dto.response.OrderIdentificationResponse;
 import br.com.fiap.postech.soat.techchallenge.application.dto.response.OrderResponse;
 import br.com.fiap.postech.soat.techchallenge.domain.models.OrderStatus;
 import jakarta.validation.Valid;
@@ -27,4 +28,7 @@ public interface OrderAPI {
 
     @DeleteMapping("/{id}")
     ResponseEntity<Void> deleteOrder(@PathVariable UUID id);
+
+    @PatchMapping("/checkout/{id}")
+    ResponseEntity<OrderIdentificationResponse> checkout(@PathVariable UUID id);
 }

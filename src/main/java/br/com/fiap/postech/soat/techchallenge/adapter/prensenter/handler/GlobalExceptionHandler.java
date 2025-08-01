@@ -2,6 +2,7 @@ package br.com.fiap.postech.soat.techchallenge.adapter.prensenter.handler;
 
 import br.com.fiap.postech.soat.techchallenge.application.exceptions.CustomerAlreadyExistsException;
 import br.com.fiap.postech.soat.techchallenge.application.exceptions.NotFoundException;
+import br.com.fiap.postech.soat.techchallenge.domain.exceptions.InvalidOrderStatusException;
 import io.swagger.v3.oas.annotations.Hidden;
 import org.springframework.context.support.DefaultMessageSourceResolvable;
 import org.springframework.http.HttpStatus;
@@ -42,5 +43,11 @@ public class GlobalExceptionHandler {
     public ResponseEntity<ErrorResponse> handleAnyException(Exception ex) {
         ErrorResponse response = new ErrorResponse(HttpStatus.INTERNAL_SERVER_ERROR.value(), ex.getMessage());
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
+    }
+
+    @ExceptionHandler(InvalidOrderStatusException.class)
+    public ResponseEntity<ErrorResponse> handleInvalidOrderStatusException(Exception ex) {
+        ErrorResponse response = new ErrorResponse(HttpStatus.BAD_REQUEST.value(), ex.getMessage());
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
     }
 }

@@ -1,5 +1,7 @@
 package br.com.fiap.postech.soat.techchallenge.adapter.controller;
 
+import br.com.fiap.postech.soat.techchallenge.adapter.prensenter.IdentificationPresenter;
+import br.com.fiap.postech.soat.techchallenge.application.dto.response.OrderIdentificationResponse;
 import br.com.fiap.postech.soat.techchallenge.infrastructure.web.OrderAPI;
 import br.com.fiap.postech.soat.techchallenge.application.dto.request.CreateOrderRequest;
 import br.com.fiap.postech.soat.techchallenge.application.dto.request.UpdateOrderRequest;
@@ -29,6 +31,7 @@ public class OrderController implements OrderAPI {
     private final ManageOrderUseCase orderUseCase;
     private final OrderRequestMapper requestMapper;
     private final OrderResponseMapper responseMapper;
+    private final IdentificationPresenter presenter;
 
     @Operation(summary = "Order search by ID")
     @Override
@@ -76,5 +79,12 @@ public class OrderController implements OrderAPI {
     public ResponseEntity<Void> deleteOrder(UUID id) {
         orderUseCase.deleteOrder(id);
         return ResponseEntity.noContent().build();
+    }
+
+    @Operation(summary = "Checkout order")
+    @Override
+    public ResponseEntity<OrderIdentificationResponse> checkout(UUID id) {
+        Order order = orderUseCase.checkoutOrder(id);
+        return ResponseEntity.ok(presenter.toIdentification(order));
     }
 }

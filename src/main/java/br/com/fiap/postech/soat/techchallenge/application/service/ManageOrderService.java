@@ -4,6 +4,8 @@ import br.com.fiap.postech.soat.techchallenge.adapter.gateway.OrderGateway;
 import br.com.fiap.postech.soat.techchallenge.application.exceptions.NotFoundException;
 import br.com.fiap.postech.soat.techchallenge.application.usercases.*;
 import br.com.fiap.postech.soat.techchallenge.application.dto.command.CreateOrderCommand;
+import br.com.fiap.postech.soat.techchallenge.domain.exceptions.InvalidEmailException;
+import br.com.fiap.postech.soat.techchallenge.domain.exceptions.InvalidOrderStatusException;
 import br.com.fiap.postech.soat.techchallenge.domain.models.*;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
@@ -75,9 +77,9 @@ public class ManageOrderService implements ManageOrderUseCase {
             case IN_PREPARATION:
                 order.setStatus(OrderStatus.READY);
                 break;
-            case READY:
-                order.setStatus(OrderStatus.FINALIZED);
-                break;
+//            case READY:
+//                order.setStatus(OrderStatus.FINALIZED);
+//                break;
         }
         orderGateway.save(order);
     }
@@ -86,5 +88,17 @@ public class ManageOrderService implements ManageOrderUseCase {
     public void deleteOrder(UUID orderID) {
     log.info("Deleting order with ID: {}", orderID);
         orderGateway.deleteById(orderID);
+    }
+
+    @Override
+    public Order checkoutOrder(UUID orderId) {
+        Order order = getOrderById(orderId);
+        OrderStatus status = order.getStatus();
+        if (status != OrderStatus.READY) {
+            throw new InvalidOrderStatusException("Order with status " + status + " cannot be finalized.");
+        }
+        order.setStatus(OrderStatus.FINALIZED);
+        orderGateway.save(order);
+        return order;
     }
 }
