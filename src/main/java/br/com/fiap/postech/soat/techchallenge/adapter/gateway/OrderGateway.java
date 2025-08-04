@@ -16,5 +16,4 @@ public interface OrderGateway {
     List<Order> findOrdersByStatus(OrderStatus status);
     void updateOrder(UUID orderId, OrderStatus orderStatus, List<OrderItem> orderItems, Customer customer);
     void deleteById(UUID id);
-    Order checkout(UUID id);
 }

@@ -8,7 +8,8 @@ import org.mapstruct.Mapper;
 public interface IdentificationPresenter {
 
     default OrderIdentificationResponse toIdentification(Order order){
-        String identification = "identif-"+ order.getCustomer().getName() + "-orderNumber-" + order.getNumber();
+        String name = order.getCustomer().getName();
+        String identification = "identif-"+ name.replaceAll(" ", "-") + "-orderNumber-" + order.getNumber();
         return new OrderIdentificationResponse(identification);
     }
 }

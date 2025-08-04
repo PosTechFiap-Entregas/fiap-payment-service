@@ -80,9 +80,4 @@ public class OrderRepository implements OrderGateway {
     public void deleteById(UUID id) {
         orderRepository.deleteById(id);
     }
-
-    @Override
-    public Order checkout(UUID id) {
-        return null;
-    }
 }
