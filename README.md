@@ -113,11 +113,11 @@ mvn test
 
 ## 🛠️ Tecnologias
 
+- Kubernetes
 - Java 17
 - Spring Boot
 - PostgreSQL
 - Flyway
-- Docker & Docker Compose
 
 ---
 
