@@ -12,9 +12,8 @@ Consulte a documentação da API e o desenho técnico clicando aqui:
 ### Pré-requisitos
 
 - [Docker](https://www.docker.com/)
+- [Minikube](https://minikube.sigs.k8s.io/docs/start/) (localmente em Kubernetes)
 - [Docker Compose](https://docs.docker.com/compose/)
-- [Java 17](https://adoptium.net/)
-- [Maven](https://maven.apache.org/)
 - [Postman](https://www.postman.com/) (opcional, para testes da API)
 
 ---
@@ -35,7 +34,7 @@ Baixe os arquivos da pasta ```src/main/resources/static/collections``` e importe
 Para iniciar **todos os serviços** (PostgreSQL e a API Spring Boot) via Docker Compose:
 
 ```bash
-./scripts/start.sh
+./.ci/deploy.sh
 ```
 
 Isso irá subir os seguintes serviços:
@@ -48,11 +47,7 @@ Isso irá subir os seguintes serviços:
 
 ## ⚙️ Subindo o banco de dados (PostgreSQL)
 
-Para iniciar **apenas o banco de dados** via Docker Compose:
-
-```bash
-./scripts/start-db.sh
-```
+Apos a finalização do Kubernetes, sera disponibilizado o banco de dados:
 
 Isso irá subir o banco na porta `5432`.
 
@@ -66,51 +61,12 @@ Isso irá subir o banco na porta `5432`.
 
 ---
 
-## 🛑 Parando o banco de dados
+## 🛑 Parando a aplicação
 
 ```bash
-./scripts/stop-db.sh
+./.ci/stop.sh
 ```
 
----
-
-## 🧹 Limpando a base com Flyway
-
-> **Atenção:** isso **remove todos os dados e estrutura** da base de dados!
-
-```bash
-./scripts/clean.sh
-```
-
----
-
-## 🧼 Limpando a aplicação e Docker (containers + imagens + volumes)
-
-Para parar todos os serviços, remover containers, imagens e **opcionalmente** os volumes do banco de dados:
-
-```bash
-./scripts/drop-app.sh
-```
-
----
-
-## 🖥️ Rodando a aplicação
-
-### 1. Gere o `.jar`
-
-Na raiz do projeto:
-
-```bash
-mvn clean package
-```
-
-### 2. Suba todos os serviços com Docker Compose:
-
-```bash
-docker compose up --build
-```
-
-Isso irá subir:
 
 - **PostgreSQL** (porta `5432`)
 - **API Spring Boot** (porta `8080`)
