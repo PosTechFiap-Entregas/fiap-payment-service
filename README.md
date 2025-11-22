@@ -61,7 +61,7 @@ Isso irá subir o banco na porta `5432`.
 
 ## 🔌 Conectando à base de dados
 
-- **URL JDBC:** `jdbc:postgresql://localhost:5432/techchallenge`
+- **URL JDBC:** `jdbc:postgresql://localhost:5432/paymentservice`
 - **Usuário:** `postgres`
 - **Senha:** `postgres`
 
@@ -84,7 +84,7 @@ Isso irá subir o banco na porta `5432`.
 Com a aplicação rodando, você pode acessar os endpoints no Postman ou navegador:
 
 ```
-http://localhost:8080/techchallenge/v1/products
+http://localhost:8080/paymentservice/v1/products
 ```
 
 ---

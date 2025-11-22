@@ -1,33 +1,33 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: tech-challenge-deployment
+  name: payment-service-deployment
   labels:
-    app: tech-challenge-app
+    app: payment-service-app
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: tech-challenge-app
+      app: payment-service-app
   template:
     metadata:
       labels:
-        app: tech-challenge-app
+        app: payment-service-app
     spec:
       initContainers:
         - name: wait-for-db
           image: busybox:latest
           command: [ 'sh', '-c', 'until nc -z db 5432; do echo "Aguardando banco..."; sleep 2; done' ]
       containers:
-      - name: tech-challenge-app
-        image: tech-challenge-app:latest
+      - name: payment-service-app
+        image: payment-service-app:latest
         ports:
           - containerPort: 8080
         envFrom:
           - configMapRef:
-              name: tech-challenge-config
+              name: payment-service-config
           - secretRef:
-              name: tech-challenge-secrets
+              name: payment-service-secrets
         resources:
           requests:
             cpu: "250m"
@@ -37,14 +37,14 @@ spec:
             memory: "512Mi"
         livenessProbe:
           httpGet:
-            path: /techchallenge/v1/actuator/health/liveness
+            path: /paymentservice/v1/actuator/health/liveness
             port: 8080
           initialDelaySeconds: 30
           periodSeconds: 10
           failureThreshold: 3
         readinessProbe:
           httpGet:
-            path: /techchallenge/v1/actuator/health/readiness
+            path: /paymentservice/v1/actuator/health/readiness
             port: 8080
           initialDelaySeconds: 10
           periodSeconds: 5

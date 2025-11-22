@@ -5,6 +5,6 @@ metadata:
   labels:
     app: db
 data:
-  POSTGRES_DB: techchallenge
+  POSTGRES_DB: paymentservice
   POSTGRES_USER: postgres
   POSTGRES_PASSWORD: postgres

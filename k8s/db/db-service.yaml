@@ -8,4 +8,4 @@ spec:
       port: 5432
       targetPort: 5432
   selector:
-    app: tech-challenge_db
+    app: payment-service_db

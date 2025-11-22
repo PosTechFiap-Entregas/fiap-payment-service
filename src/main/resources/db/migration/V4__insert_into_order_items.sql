@@ -1,2 +1,0 @@
-INSERT INTO orders (id, customer_id, status, observation, number, creation_date) VALUES ('64cce1f2-0c0a-420a-b007-3a0071869b02', '68fbd23a-2a12-47b3-9b87-feba8af73c9d', 'IN_PREPARATION', 'Tirar cebola', 1, '2025-06-04 10:30:00');
-INSERT INTO items (id, quantity, order_id, product_id) VALUES ('9a563fd9-3aa3-47d6-b7c4-e15b19397b2e', 3, '64cce1f2-0c0a-420a-b007-3a0071869b02', '02ca0730-6ca6-4a7f-aaa1-2442d36cd15a');

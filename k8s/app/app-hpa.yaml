@@ -1,14 +1,14 @@
 apiVersion: autoscaling/v2
 kind: HorizontalPodAutoscaler
 metadata:
-  name: tech-challenge-hpa
+  name: payment-service-hpa
   labels:
-    app: tech-challenge-app
+    app: payment-service-app
 spec:
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
-    name: tech-challenge-deployment
+    name: payment-service-deployment
   minReplicas: 2
   maxReplicas: 5
   metrics:
