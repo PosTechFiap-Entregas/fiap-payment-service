@@ -1,5 +1,6 @@
 package br.com.fiap.paymentservice.application.usercases;
 
+import br.com.fiap.paymentservice.application.dto.pagination.PagedResult;
 import br.com.fiap.paymentservice.domain.models.Payment;
 import br.com.fiap.paymentservice.domain.models.PaymentStatus;
 
@@ -11,4 +12,5 @@ public interface ManagePaymentUseCase {
     void pay(PaymentStatus status, UUID id);
     Payment getById(UUID id);
     Payment getByOrderId(UUID orderId);
+    PagedResult<Payment> list(UUID orderId, int page, int size);
 }

@@ -4,7 +4,6 @@ spring:
     driver-class-name: org.h2.Driver
     username: sa
     password:
-    initialization-mode: always
   h2:
     console:
       enabled: true
@@ -19,10 +18,3 @@ spring:
       hibernate:
         show_sql: false
         format_sql: false
-  messages:
-    basename: messages
-
-logging:
-  level:
-    org.hibernate.SQL: OFF
-    org.hibernate.type.descriptor.sql.BasicBinder: OFF

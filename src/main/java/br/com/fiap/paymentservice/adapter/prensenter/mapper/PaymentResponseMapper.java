@@ -12,6 +12,7 @@ public interface PaymentResponseMapper {
 
         return new PaymentResponse(
                 payment.getId(),
+                payment.getOrderId(),
                 payment.getQrCode(),
                 payment.getStatus()
         );

@@ -54,6 +54,11 @@ mercado-pago:
   pos-id: CaixaPOS1
   notification-url: ${NOTIFICATION_URL:https://f0c2-2804-1b3-aa83-b1ee-5de8-e154-a7d9-6180.ngrok-free.app}
 
+orders-service:
+  host: ${ORDERS_SERVICE_HOST:http://localhost:8082}
+  context-path: ${ORDERS_SERVICE_CONTEXT_PATH:/orders}
+  webhook-path: ${ORDERS_SERVICE_WEBHOOK_PATH:/api/Webhook}
+
 logging:
   level:
     root: INFO
